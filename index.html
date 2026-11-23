@@ -1,0 +1,32 @@
+<!DOCTYPE html><html lang="id"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Music Player Templates</title>
+<style>
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+body{margin:0;background:#0d0f14;color:#fff;font-family:system-ui,Roboto,sans-serif;padding:calc(20px + env(safe-area-inset-top,0px)) 16px calc(24px + env(safe-area-inset-bottom,0px))}
+h1{font-size:22px;margin:8px 0 4px}p.s{margin:0 0 20px;color:#9aa0b4;font-size:14px}
+#g{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;max-width:640px}
+.c{display:block;text-decoration:none;color:inherit;background:#161922;border:1px solid #272b38;border-radius:18px;overflow:hidden}
+.c .t{aspect-ratio:3/4;display:flex;align-items:flex-end;padding:10px}
+.c .b{padding:12px}.c b{font-size:15px}.c span{display:block;font-size:12px;color:#9aa0b4;margin-top:4px}
+.c.off{opacity:.55;pointer-events:none}
+.tag{font-size:11px;background:rgba(0,0,0,.45);padding:4px 8px;border-radius:20px}
+</style></head><body>
+<h1>Music Player Templates</h1>
+<p class="s">Pilih gaya kartu, upload foto + lagu, lalu render jadi video 🎬</p>
+<div id="g"></div>
+<script>
+// Template baru: bikin folder-nya, lalu tambah satu baris di sini
+var templates=[
+  {nama:"Liquid Glass",desc:"Kartu kaca ala player iPhone",folder:"glass/",ready:true,bg:"linear-gradient(160deg,#6a8fcf,#9bb2d3 50%,#2d4b7a)"},
+  {nama:"Vinyl",desc:"Piringan hitam muter",folder:"vinyl/",ready:false,bg:"linear-gradient(160deg,#2b2b32,#111)"},
+  {nama:"Poster Minimalis",desc:"Cover full + judul gede",folder:"poster/",ready:false,bg:"linear-gradient(160deg,#e8d9c4,#b79d7c)"},
+  {nama:"Neon Visualizer",desc:"Bar gelombang audio",folder:"neon/",ready:false,bg:"linear-gradient(160deg,#1a0b3a,#ff2e93)"},
+  {nama:"Kaset Retro",desc:"Kaset pita nostalgia",folder:"kaset/",ready:false,bg:"linear-gradient(160deg,#f2c14e,#d1495b)"}
+];
+var g=document.getElementById('g');
+templates.forEach(function(t){
+  var a=document.createElement('a');a.className='c'+(t.ready?'':' off');if(t.ready)a.href=t.folder;
+  a.innerHTML='<div class="t" style="background:'+t.bg+'">'+(t.ready?'':'<span class="tag">Segera hadir</span>')+'</div><div class="b"><b>'+t.nama+'</b><span>'+t.desc+'</span></div>';
+  g.appendChild(a)});
+</script></body></html>
