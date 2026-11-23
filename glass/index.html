@@ -39,7 +39,7 @@ body{display:flex;flex-direction:column;overflow:hidden;padding-top:env(safe-are
 var $=function(i){return document.getElementById(i)},FONT='system-ui,Roboto,sans-serif';
 var cv=$('cv'),c=cv.getContext('2d'),base=document.createElement('canvas'),bc=base.getContext('2d'),bgc=document.createElement('canvas'),gc=bgc.getContext('2d');
 var F={'9:16':[1080,1920],'4:5':[1080,1350],'1:1':[1080,1080]},W=1080,H=1920,CS=1,CH=1558,img=null,blur=36,vol=.6,fav=false,dirty=1,rendering=false,rStart=0,rEnd=0,rStop=null,
-audio=new Audio(),hasAudio=false,simPos=2,simPlay=true,SIMDUR=56,AC,dest,spk,fadeG,T={t:'Laut Kidul',a:'Muslih Fvnky',d:'iPhone'};
+audio=new Audio(),hasAudio=false,simPos=2,simPlay=true,SIMDUR=56,AC,dest,spk,fadeG,T={t:'Terserah kalian',a:'Nama kalian',d:'iPhone'};
 var P=function(d){return new Path2D(d)};
 var I={star:P('M12 2.8l2.8 5.9 6.4.9-4.7 4.5 1.2 6.4L12 17.4 6.3 20.5l1.2-6.4L2.8 9.6l6.4-.9z'),prev:P('M11 6v12L2.5 12zM21.5 6v12L13 12z'),next:P('M2.5 6v12L11 12zM13 6v12l8.5-6z'),pause:P('M5.5 4h4.6v16H5.5zM13.9 4h4.6v16h-4.6z'),play:P('M7.5 4.8v14.4L19.5 12z'),spk:P('M4 9.5h3.5L12 5.5v13l-4.5-4H4z'),wv:P('M15.4 8.8a4.6 4.6 0 010 6.4M18 6.4a8.2 8.2 0 010 11.2'),h1:P('M5.4 17.6a8.2 8.2 0 1113.2 0'),h2:P('M8.3 14.8a4.3 4.3 0 117.4 0'),h3:P('M12 14.6l4 5.6H8z'),note:P('M9 18V5l11-2v13')};
 
