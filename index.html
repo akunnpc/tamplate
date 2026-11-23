@@ -7,26 +7,37 @@ body{margin:0;background:#0d0f14;color:#fff;font-family:system-ui,Roboto,sans-se
 h1{font-size:22px;margin:8px 0 4px}p.s{margin:0 0 20px;color:#9aa0b4;font-size:14px}
 #g{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;max-width:640px}
 .c{display:block;text-decoration:none;color:inherit;background:#161922;border:1px solid #272b38;border-radius:18px;overflow:hidden}
-.c .t{aspect-ratio:3/4;display:flex;align-items:flex-end;padding:10px}
+.c .t{position:relative;aspect-ratio:3/4;display:flex;align-items:flex-end;padding:10px;overflow:hidden}
+.c .t svg,.c .t img{position:absolute;inset:0;width:100%;height:100%}
+.c .t img{object-fit:cover}
 .c .b{padding:12px}.c b{font-size:15px}.c span{display:block;font-size:12px;color:#9aa0b4;margin-top:4px}
-.c.off{opacity:.55;pointer-events:none}
-.tag{font-size:11px;background:rgba(0,0,0,.45);padding:4px 8px;border-radius:20px}
+.c.off{opacity:.6;pointer-events:none}
+.tag{position:relative;z-index:2;font-size:11px;background:rgba(0,0,0,.55);padding:4px 8px;border-radius:20px}
 </style></head><body>
 <h1>Music Player Templates</h1>
 <p class="s">Pilih gaya kartu, upload foto + lagu, lalu render jadi video 🎬</p>
 <div id="g"></div>
 <script>
-// Template baru: bikin folder-nya, lalu tambah satu baris di sini
+var V='<svg viewBox="0 0 300 400" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">';
+function txt(c){return '<rect x="40" y="318" width="140" height="12" rx="6" fill="'+(c||'#fff')+'"/><rect x="40" y="338" width="90" height="9" rx="4" fill="rgba(255,255,255,.5)"/><rect x="40" y="362" width="220" height="5" rx="3" fill="rgba(255,255,255,.25)"/><rect x="40" y="362" width="90" height="5" rx="3" fill="'+(c||'#fff')+'"/>'}
+function neon(){var h=[60,110,80,150,200,130,170,90,140,70,120,50],b='';h.forEach(function(v,i){b+='<rect x="'+(24+i*21)+'" y="'+(290-v)+'" width="13" height="'+v+'" rx="6" fill="url(#ng)"/>'});
+  return V+'<defs><linearGradient id="ng" x1="0" y1="1" x2="0" y2="0"><stop offset="0" stop-color="#ff2e93"/><stop offset="1" stop-color="#00e5ff"/></linearGradient></defs>'+b+txt()+'</svg>'}
+// Template baru: bikin folder-nya, lalu tambah satu baris di sini.
+// Mau pakai foto asli? Taruh preview.jpg di folder template, otomatis muncul.
 var templates=[
-  {nama:"Liquid Glass",desc:"Kartu kaca ala player iPhone",folder:"glass/",ready:true,bg:"linear-gradient(160deg,#6a8fcf,#9bb2d3 50%,#2d4b7a)"},
-  {nama:"Vinyl",desc:"Piringan hitam muter",folder:"vinyl/",ready:true,bg:"linear-gradient(160deg,#2b2b32,#111)"},
-  {nama:"Poster Minimalis",desc:"Cover full + judul gede",folder:"poster/",ready:false,bg:"linear-gradient(160deg,#e8d9c4,#b79d7c)"},
-  {nama:"Neon Visualizer",desc:"Bar gelombang audio",folder:"neon/",ready:false,bg:"linear-gradient(160deg,#1a0b3a,#ff2e93)"},
-  {nama:"Kaset Retro",desc:"Kaset pita nostalgia",folder:"kaset/",ready:false,bg:"linear-gradient(160deg,#f2c14e,#d1495b)"}
+ {nama:"Liquid Glass",desc:"Kartu kaca ala player iPhone",folder:"glass/",ready:true,bg:"linear-gradient(160deg,#6a8fcf,#9bb2d3 50%,#2d4b7a)",
+  svg:V+'<rect x="28" y="36" width="244" height="328" rx="44" fill="rgba(255,255,255,.2)" stroke="rgba(255,255,255,.6)" stroke-width="2"/><rect x="48" y="56" width="204" height="204" rx="28" fill="#4a6ea6"/><circle cx="150" cy="158" r="32" fill="rgba(255,255,255,.35)"/><rect x="48" y="280" width="110" height="12" rx="6" fill="#fff"/><rect x="48" y="300" width="70" height="9" rx="4" fill="rgba(255,255,255,.55)"/><rect x="48" y="322" width="204" height="6" rx="3" fill="rgba(255,255,255,.3)"/><rect x="48" y="322" width="80" height="6" rx="3" fill="#fff"/><circle cx="150" cy="346" r="8" fill="#fff"/></svg>'},
+ {nama:"Vinyl",desc:"Piringan hitam muter",folder:"vinyl/",ready:true,bg:"linear-gradient(160deg,#2b2b32,#111)",
+  svg:V+'<circle cx="150" cy="170" r="112" fill="#0c0c0f"/><circle cx="150" cy="170" r="92" fill="none" stroke="rgba(255,255,255,.1)"/><circle cx="150" cy="170" r="72" fill="none" stroke="rgba(255,255,255,.1)"/><circle cx="150" cy="170" r="42" fill="#d9534f"/><circle cx="150" cy="170" r="6" fill="#0d0d10"/><line x1="262" y1="30" x2="186" y2="190" stroke="#cfd3dc" stroke-width="7" stroke-linecap="round"/><circle cx="262" cy="30" r="14" fill="#e6e8ee"/>'+txt()+'</svg>'},
+ {nama:"Poster Minimalis",desc:"Cover full + judul gede",folder:"poster/",ready:false,bg:"linear-gradient(160deg,#e8d9c4,#b79d7c)",
+  svg:V+'<circle cx="215" cy="85" r="30" fill="rgba(255,255,255,.5)"/><path d="M0 240L90 120 150 190 210 100 300 240Z" fill="rgba(255,255,255,.28)"/><rect y="240" width="300" height="160" fill="rgba(0,0,0,.35)"/><rect x="28" y="270" width="200" height="26" rx="6" fill="#fff"/><rect x="28" y="306" width="130" height="16" rx="5" fill="rgba(255,255,255,.7)"/><rect x="28" y="362" width="244" height="4" rx="2" fill="rgba(255,255,255,.35)"/><rect x="28" y="362" width="100" height="4" rx="2" fill="#fff"/></svg>'},
+ {nama:"Neon Visualizer",desc:"Bar gelombang audio",folder:"neon/",ready:false,bg:"linear-gradient(160deg,#1a0b3a,#2a0f4a)",svg:neon()},
+ {nama:"Kaset Retro",desc:"Kaset pita nostalgia",folder:"kaset/",ready:false,bg:"linear-gradient(160deg,#f2c14e,#d1495b)",
+  svg:V+'<rect x="30" y="80" width="240" height="170" rx="18" fill="#2b2230"/><rect x="50" y="98" width="200" height="72" rx="8" fill="#f6e7c1"/><rect x="68" y="116" width="120" height="10" rx="5" fill="#d1495b"/><rect x="68" y="136" width="80" height="8" rx="4" fill="#9a8f78"/><circle cx="105" cy="208" r="24" fill="#111"/><circle cx="105" cy="208" r="10" fill="#ddd"/><circle cx="195" cy="208" r="24" fill="#111"/><circle cx="195" cy="208" r="10" fill="#ddd"/>'+txt()+'</svg>'}
 ];
 var g=document.getElementById('g');
 templates.forEach(function(t){
   var a=document.createElement('a');a.className='c'+(t.ready?'':' off');if(t.ready)a.href=t.folder;
-  a.innerHTML='<div class="t" style="background:'+t.bg+'">'+(t.ready?'':'<span class="tag">Segera hadir</span>')+'</div><div class="b"><b>'+t.nama+'</b><span>'+t.desc+'</span></div>';
+  a.innerHTML='<div class="t" style="background:'+t.bg+'">'+t.svg+'<img src="'+t.folder+'preview.jpg" alt="" onerror="this.remove()">'+(t.ready?'':'<span class="tag">Segera hadir</span>')+'</div><div class="b"><b>'+t.nama+'</b><span>'+t.desc+'</span></div>';
   g.appendChild(a)});
 </script></body></html>
